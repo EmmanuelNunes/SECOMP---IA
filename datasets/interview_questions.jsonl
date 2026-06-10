@@ -1,0 +1,10 @@
+{"question":"O que é um LLM?","answer":"Modelo de linguagem treinado em grandes volumes de texto."}
+{"question":"O que é RAG?","answer":"Retrieval-Augmented Generation."}
+{"question":"O que é MCP?","answer":"Model Context Protocol."}
+{"question":"Explique embeddings.","answer":"Representação vetorial de texto."}
+{"question":"O que é Fine-Tuning?","answer":"Ajuste especializado de um modelo."}
+{"question":"O que é ChromaDB?","answer":"Banco vetorial open source."}
+{"question":"O que é Prompt Injection?","answer":"Manipulação maliciosa de prompts."}
+{"question":"Explique agentes inteligentes.","answer":"Sistemas que planejam e executam ações."}
+{"question":"O que é LangGraph?","answer":"Framework para workflows de agentes."}
+{"question":"O que é observabilidade?","answer":"Monitoramento e auditoria do sistema."}

@@ -1,0 +1,3 @@
+{"topic": "Machine Learning", "summary": "Machine learning é um subcampo da IA que foca em construir sistemas que aprendem com dados.", "key_concepts": ["Aprendizado Supervisionado", "Aprendizado Não-Supervisionado", "Redes Neurais"]}
+{"topic": "System Design", "summary": "System design é o processo de definir a arquitetura, componentes e interfaces para um sistema satisfazer requisitos específicos.", "key_concepts": ["Escalabilidade", "Microsserviços", "Balanceamento de Carga"]}
+{"topic": "Engenharia de Prompt", "summary": "Técnica para estruturar instruções que guiam o comportamento e as respostas de Grandes Modelos de Linguagem (LLMs).", "key_concepts": ["Few-shot Prompting", "Chain of Thought", "System Prompts"]}
