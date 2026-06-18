@@ -4,29 +4,715 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Career-AI | SECOMP 2026</title>
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Marked.js for Rendering Markdown -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
-            background-color: #f4f7f6;
-            margin-top: 100px;
+        :root {
+            --bg-color: #0d0e12;
+            --card-bg: rgba(22, 24, 33, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --primary: #6366f1; /* Indigo */
+            --primary-glow: rgba(99, 102, 241, 0.15);
+            --accent: #10b981; /* Emerald */
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
         }
-        h1 { color: #2c3e50; font-size: 3rem; margin-bottom: 10px; }
-        p { color: #7f8c8d; font-size: 1.2rem; }
-        .container {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(16, 119, 129, 0.05) 0%, transparent 40%);
+        }
+
+        /* Ambient subtle glowing grid background */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.005) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.005) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        header {
+            padding: 30px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            background: rgba(13, 14, 18, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #a5b4fc 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            background: linear-gradient(135deg, #6366f1 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .badge-status {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .badge-status::before {
+            content: '';
             display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        main {
+            flex: 1;
+            max-width: 1200px;
+            width: 90%;
+            margin: 40px auto;
+            z-index: 10;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #f3f4f6, #9ca3af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Glassmorphism navigation tabs */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 8px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(5px);
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            padding: 12px 24px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .tab-btn.active {
+            color: var(--text-main);
+            background: var(--primary);
+            box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Card panels */
+        .panel {
+            display: none;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(16px);
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        /* Form elements */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-main);
+            text-align: left;
+        }
+
+        .input-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 14px 18px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-action {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            border: none;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+        }
+
+        .btn-action:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-action:active {
+            transform: translateY(0);
+        }
+
+        .btn-action:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        /* Results rendering block */
+        .results-box {
+            margin-top: 30px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+            text-align: left;
+            display: none;
+            animation: slideUp 0.4s ease-out;
+        }
+
+        .results-content {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            line-height: 1.6;
+            font-size: 0.98rem;
+        }
+
+        /* Markdown styling inside results */
+        .results-content h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #a5b4fc;
+        }
+
+        .results-content h4 {
+            font-size: 1.1rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .results-content ul, .results-content ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .results-content li {
+            margin-bottom: 6px;
+        }
+
+        .results-content blockquote {
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
+            margin: 15px 0;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.02);
+            padding-top: 8px;
+            padding-bottom: 8px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .results-content code {
+            font-family: 'Courier New', Courier, monospace;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        /* Interview simulator styling */
+        .question-card {
+            background: rgba(99, 102, 241, 0.03);
+            border: 1px dashed rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: left;
+            display: none;
+        }
+
+        .question-title {
+            font-weight: 600;
+            color: #a5b4fc;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: none;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 0.8s ease infinite;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: auto;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .input-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            .tabs {
+                flex-direction: column;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>🚀 Career-AI MVP</h1>
-        <p>A interface de interação com nossos Agentes aparecerá aqui!</p>
-        <p><i>Projeto Final - SECOMP 2026</i></p>
-    </div>
+
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-robot"></i> Career-AI
+        </div>
+        <div class="badge-status" id="backend-status">
+            Conectando ao Backend...
+        </div>
+    </header>
+
+    <main>
+        <div class="hero">
+            <h1>Assistente de Carreira Inteligente</h1>
+            <p>O poder dos agentes autônomos e RAG integrados para acelerar a sua evolução profissional. MVP desenvolvido para a SECOMP 2026.</p>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('resume')">
+                <i class="fa-solid fa-file-invoice"></i> Análise de Currículo
+            </button>
+            <button class="tab-btn" onclick="switchTab('interview')">
+                <i class="fa-solid fa-comments"></i> Simulador de Entrevista
+            </button>
+            <button class="tab-btn" onclick="switchTab('roadmap')">
+                <i class="fa-solid fa-map-location-dot"></i> Roteiro de Estudos
+            </button>
+        </div>
+
+        <!-- PANEL 1: RESUME ANALYZER -->
+        <div id="panel-resume" class="panel active">
+            <div class="form-group">
+                <div class="input-row">
+                    <div style="flex: 1; margin-bottom: 15px;">
+                        <label for="resume-candidate">Selecione o Candidato (Indexado no RAG):</label>
+                        <select id="resume-candidate">
+                            <option value="Alice Silva">Alice Silva (Machine Learning, Python)</option>
+                            <option value="Bruno Souza">Bruno Souza (JavaScript, React)</option>
+                            <option value="Carla Mendes">Carla Mendes (Product Management, Scrum)</option>
+                            <option value="Diego Costa">Diego Costa (Java, AWS, Docker)</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1; margin-bottom: 15px;">
+                        <label for="resume-role">Vaga de Carreira Desejada:</label>
+                        <input type="text" id="resume-role" value="Cientista de Dados Sênior">
+                    </div>
+                </div>
+            </div>
+            <button class="btn-action" id="btn-analyze-resume" onclick="runResumeAnalysis()">
+                <span class="spinner" id="spin-resume"></span>
+                <i class="fa-solid fa-magnifying-glass"></i> Executar Análise com Agente
+            </button>
+
+            <div class="results-box" id="box-resume">
+                <div class="results-content" id="content-resume"></div>
+            </div>
+        </div>
+
+        <!-- PANEL 2: INTERVIEW SIMULATOR -->
+        <div id="panel-interview" class="panel">
+            <div class="form-group" style="text-align: left;">
+                <label for="interview-topic">Escolha o Tema da Entrevista:</label>
+                <select id="interview-topic" style="max-width: 400px; margin-bottom: 20px;">
+                    <option value="RAG">RAG (Retrieval-Augmented Generation)</option>
+                    <option value="MCP">MCP (Model Context Protocol)</option>
+                    <option value="ChromaDB">ChromaDB (Banco Vetorial)</option>
+                    <option value="Prompt Injection">Prompt Injection (Segurança)</option>
+                    <option value="LangGraph">LangGraph (Agentes)</option>
+                </select>
+            </div>
+            
+            <button class="btn-action" id="btn-get-question" onclick="fetchQuestion()">
+                <span class="spinner" id="spin-question"></span>
+                <i class="fa-solid fa-circle-question"></i> Sortear Pergunta
+            </button>
+
+            <div class="question-card" id="card-question">
+                <div class="question-title"><i class="fa-solid fa-code-fork"></i> Pergunta Técnica:</div>
+                <div class="question-text" id="text-question">Qual o conceito central do RAG?</div>
+            </div>
+
+            <div class="form-group" id="group-answer" style="display: none; text-align: left; margin-top: 25px;">
+                <label for="user-answer">Escreva a sua resposta técnica:</label>
+                <textarea id="user-answer" placeholder="Escreva a resposta aqui... Mencione conceitos estruturais e palavras-chave."></textarea>
+                
+                <button class="btn-action" id="btn-submit-answer" onclick="submitAnswer()" style="margin-top: 15px; background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                    <span class="spinner" id="spin-evaluate"></span>
+                    <i class="fa-solid fa-paper-plane"></i> Enviar Resposta para o Agente
+                </button>
+            </div>
+
+            <div class="results-box" id="box-interview">
+                <div class="results-content" id="content-interview"></div>
+            </div>
+        </div>
+
+        <!-- PANEL 3: STUDY ROADMAP -->
+        <div id="panel-roadmap" class="panel">
+            <div class="form-group" style="text-align: left;">
+                <label for="roadmap-topic">Digite o Tópico ou Tecnologia que deseja dominar:</label>
+                <input type="text" id="roadmap-topic" value="Machine Learning" style="max-width: 500px; margin-bottom: 20px;">
+            </div>
+            <button class="btn-action" id="btn-generate-roadmap" onclick="runRoadmapGeneration()">
+                <span class="spinner" id="spin-roadmap"></span>
+                <i class="fa-solid fa-compass"></i> Gerar Roadmap Personalizado
+            </button>
+
+            <div class="results-box" id="box-roadmap">
+                <div class="results-content" id="content-roadmap"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Career-AI MVP — VII Semana de Computação (SECOMP 2026). Desenvolvido por Emmanuel Nunes com 💙.</p>
+    </footer>
+
+    <script>
+        const API_URL = "http://127.0.0.1:8000";
+        let currentQuestion = "";
+        let expectedAnswer = "";
+
+        // Testa conexão com o backend FastAPI ao iniciar a página
+        async function checkBackendHealth() {
+            const statusBadge = document.getElementById("backend-status");
+            try {
+                const res = await fetch(`${API_URL}/health`);
+                if (res.ok) {
+                    statusBadge.innerText = "Backend Online";
+                    statusBadge.style.color = "#10b981";
+                    statusBadge.style.background = "rgba(16, 185, 129, 0.1)";
+                    statusBadge.style.borderColor = "rgba(16, 185, 129, 0.2)";
+                } else {
+                    throw new Error();
+                }
+            } catch (err) {
+                statusBadge.innerText = "Backend Offline";
+                statusBadge.style.color = "#f87171";
+                statusBadge.style.background = "rgba(248, 113, 113, 0.1)";
+                statusBadge.style.borderColor = "rgba(248, 113, 113, 0.2)";
+            }
+        }
+
+        // Navegação entre abas
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.panel').forEach(panel => panel.classList.remove('active'));
+
+            const event = window.event;
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            } else {
+                // Fallback se ativado via teclado/código
+                const btns = document.querySelectorAll('.tab-btn');
+                if (tabName === 'resume') btns[0].classList.add('active');
+                if (tabName === 'interview') btns[1].classList.add('active');
+                if (tabName === 'roadmap') btns[2].classList.add('active');
+            }
+
+            document.getElementById(`panel-${tabName}`).classList.add('active');
+        }
+
+        // --- Ações do Painel de Análise de Currículo ---
+        async function runResumeAnalysis() {
+            const candidate = document.getElementById("resume-candidate").value;
+            const role = document.getElementById("resume-role").value;
+            const btn = document.getElementById("btn-analyze-resume");
+            const spin = document.getElementById("spin-resume");
+            const box = document.getElementById("box-resume");
+            const content = document.getElementById("content-resume");
+
+            btn.disabled = true;
+            spin.style.display = "inline-block";
+            box.style.display = "none";
+
+            try {
+                const res = await fetch(`${API_URL}/api/resume/analyze`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ name: candidate, role: role })
+                });
+                
+                if (!res.ok) throw new Error("Erro na comunicação com a API");
+                const data = await res.json();
+                
+                content.innerHTML = marked.parse(data.analysis);
+                box.style.display = "block";
+            } catch (error) {
+                content.innerHTML = `<p style="color: #f87171;"><i class="fa-solid fa-triangle-exclamation"></i> Falha ao conectar ao backend. Verifique se o servidor FastAPI está executando na porta 8000.</p>`;
+                box.style.display = "block";
+            } finally {
+                btn.disabled = false;
+                spin.style.display = "none";
+            }
+        }
+
+        // --- Ações do Simulador de Entrevista ---
+        async function fetchQuestion() {
+            const topic = document.getElementById("interview-topic").value;
+            const btn = document.getElementById("btn-get-question");
+            const spin = document.getElementById("spin-question");
+            const card = document.getElementById("card-question");
+            const text = document.getElementById("text-question");
+            const answerGroup = document.getElementById("group-answer");
+            const box = document.getElementById("box-interview");
+
+            btn.disabled = true;
+            spin.style.display = "inline-block";
+            card.style.display = "none";
+            answerGroup.style.display = "none";
+            box.style.display = "none";
+
+            try {
+                const res = await fetch(`${API_URL}/api/interview/question?topic=${encodeURIComponent(topic)}`);
+                if (!res.ok) throw new Error();
+                const data = await res.json();
+
+                currentQuestion = data.question;
+                expectedAnswer = data.expected_answer;
+
+                text.innerText = currentQuestion;
+                card.style.display = "block";
+                answerGroup.style.display = "block";
+                document.getElementById("user-answer").value = "";
+            } catch (error) {
+                alert("Falha ao sortear pergunta. Verifique se o backend está ativo.");
+            } finally {
+                btn.disabled = false;
+                spin.style.display = "none";
+            }
+        }
+
+        async function submitAnswer() {
+            const answer = document.getElementById("user-answer").value;
+            if (!answer.trim()) {
+                alert("Por favor, escreva uma resposta antes de enviar!");
+                return;
+            }
+
+            const btn = document.getElementById("btn-submit-answer");
+            const spin = document.getElementById("spin-evaluate");
+            const box = document.getElementById("box-interview");
+            const content = document.getElementById("content-interview");
+
+            btn.disabled = true;
+            spin.style.display = "inline-block";
+            box.style.display = "none";
+
+            try {
+                const res = await fetch(`${API_URL}/api/interview/evaluate`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        question: currentQuestion,
+                        user_answer: answer,
+                        expected_answer: expectedAnswer
+                    })
+                });
+
+                if (!res.ok) throw new Error();
+                const data = await res.json();
+
+                content.innerHTML = marked.parse(data.feedback);
+                box.style.display = "block";
+            } catch (error) {
+                content.innerHTML = `<p style="color: #f87171;"><i class="fa-solid fa-triangle-exclamation"></i> Falha ao avaliar a resposta. Verifique a conexão com o backend.</p>`;
+                box.style.display = "block";
+            } finally {
+                btn.disabled = false;
+                spin.style.display = "none";
+            }
+        }
+
+        // --- Ações do Roteiro de Estudos ---
+        async function runRoadmapGeneration() {
+            const topic = document.getElementById("roadmap-topic").value;
+            const btn = document.getElementById("btn-generate-roadmap");
+            const spin = document.getElementById("spin-roadmap");
+            const box = document.getElementById("box-roadmap");
+            const content = document.getElementById("content-roadmap");
+
+            btn.disabled = true;
+            spin.style.display = "inline-block";
+            box.style.display = "none";
+
+            try {
+                const res = await fetch(`${API_URL}/api/learning/roadmap?topic=${encodeURIComponent(topic)}`);
+                if (!res.ok) throw new Error();
+                const data = await res.json();
+
+                content.innerHTML = marked.parse(data.roadmap);
+                box.style.display = "block";
+            } catch (error) {
+                content.innerHTML = `<p style="color: #f87171;"><i class="fa-solid fa-triangle-exclamation"></i> Falha ao gerar o roteiro. Verifique o backend.</p>`;
+                box.style.display = "block";
+            } finally {
+                btn.disabled = false;
+                spin.style.display = "none";
+            }
+        }
+
+        // Verifica o estado inicial
+        checkBackendHealth();
+    </script>
 </body>
 </html>

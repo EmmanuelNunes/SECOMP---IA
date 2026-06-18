@@ -2,19 +2,24 @@ from .vector_store import VectorStore
 
 class ContextRetriever:
     def __init__(self, vector_store: VectorStore):
+        """Inicializa o buscador com uma instância do VectorStore."""
         self.vector_store = vector_store
         
-    def get_relevant_context(self, user_query: str) -> str:
+    def get_relevant_context(self, user_query: str, top_k: int = 2) -> str:
         """
-        Dada a pergunta do usuário, gera o embedding da query e 
-        busca no banco vetorial o contexto para o LLM responder.
+        Dada a consulta do usuário, realiza busca semântica no banco vetorial
+        e formata os resultados em um único bloco de texto que servirá de
+        contexto enriquecido para o LLM.
         """
-        # TODO: Chamar API de Embedding para converter user_query em um vetor
-        dummy_query_embedding = [0.1, 0.2, 0.3]
+        results = self.vector_store.search(user_query, top_k=top_k)
         
-        # Realiza a busca semântica no banco
-        results = self.vector_store.search(dummy_query_embedding, top_k=2)
-        
-        # Formata os resultados em uma string de contexto única
-        context = "\n---\n".join([str(doc) for doc in results])
+        # Une o conteúdo textual dos documentos mais similares encontrados
+        context_parts = []
+        for res in results:
+            content = res["content"]
+            meta = res["metadata"]
+            meta_str = f"[{meta.get('type', 'desconhecido').upper()}]"
+            context_parts.append(f"{meta_str} {content}")
+            
+        context = "\n---\n".join(context_parts)
         return context
