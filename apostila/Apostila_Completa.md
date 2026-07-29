@@ -6,6 +6,7 @@ Bem-vindo(a) à apostila oficial do **Workshop de IA e Agentes Autônomos** da *
 
 ## 📌 Sumário
 1. [Módulo 1: Introdução aos Grandes Modelos de Linguagem (LLMs)](#1-módulo-1-introdução-aos-grandes-modelos-de-linguagem-llms)
+1.1 [Módulo 1.1: Guia de Prompting no Google Workspace com Gemini](#11-módulo-11-guia-de-prompting-no-google-workspace-com-gemini)
 2. [Módulo 2: Engenharia de Prompts (Prompt Engineering)](#2-módulo-2-engenharia-de-prompts-prompt-engineering)
 3. [Módulo 3: Model Context Protocol (MCP)](#3-módulo-3-model-context-protocol-mcp)
 4. [Módulo 4: Agentes Autônomos](#4-módulo-4-agentes-autônomos)
@@ -39,6 +40,55 @@ A qualidade, tom e utilidade da resposta gerada por um LLM dependem inteiramente
 * **Prompt Específico vs. Genérico:**
   * Vago: `"O que é RAG?"` -> Resposta teórica padrão de dicionário técnico.
   * Robusto: `"Explique RAG para um estudante de Ciência da Computação utilizando exemplos práticos."` -> Resposta estruturada com fluxos de algoritmos, analogias a bancos de dados tradicionais e exemplos de código ou arquitetura.
+
+---
+
+## 1.1. Módulo 1.1: Guia de Prompting no Google Workspace com Gemini
+
+A integração da Inteligência Artificial Generativa com o ecossistema corporativo do Google Workspace permite interações ricas e seguras diretamente sobre os dados do usuário.
+
+### Visão Geral do Gemini no Workspace
+
+Existem duas abordagens de acesso à IA generativa no Workspace:
+1. **Aplicativos Dedicados (AI-First):**
+   * **Gemini App:** Interface de chat corporativa com recursos como *Deep Research* (pesquisas estruturadas profundas) e *Canvas* (ambiente interativo de edição e refinamento iterativo).
+   * **NotebookLM:** Assistente de pesquisa fundamentado nos documentos enviados pelo usuário, gerando resumos estruturados e o inovador *Audio Overview* (podcasts em áudio gerados via IA baseados nos seus arquivos).
+   * **Google Vids:** Assistente de roteirização, produção e edição de vídeos interativos usando IA.
+2. **Integração Embutida:** Acesso direto in-line e no painel lateral em aplicativos tradicionais (Gmail, Docs, Slides, Sheets, Meet, Drive).
+
+> [!IMPORTANT]
+> **Privacidade de Dados Corporativos:** Os dados do usuário não pertencem ao Google, permanecem restritos ao ambiente Workspace da empresa, não são usados para publicidade ou treinamento de modelos de IA e não passam por revisão humana.
+
+### Os 4 Pilares de um Prompt Eficaz (Prompting 101)
+
+Para obter resultados precisos com o Gemini no Workspace, a instrução deve ser estruturada idealmente em quatro componentes:
+
+| Componente | Descrição | Exemplo Prático |
+| :--- | :--- | :--- |
+| **Persona (Papel)** | Papel ou especialização que a IA assume. | *"Você é um gerente de programas na área de tecnologia."* |
+| **Task (Tarefa)** | Ação principal que a IA deve realizar (iniciada por um verbo). | *"Esboce um e-mail de resumo executivo..."* |
+| **Context (Contexto)** | Detalhes de suporte e o cenário do problema. | *"Para o Diretor de Operações sobre a implantação do novo sistema..."* |
+| **Format (Formato)** | A organização visual de saída desejada. | *"Organize a resposta em tópicos curtos e concisos."* |
+
+### Dicas Práticas de Otimização e Iteração
+
+O guia de prompts do Gemini recomenda 6 dicas fundamentais:
+1. **Use Linguagem Natural:** Escreva frases completas como se estivesse conversando com um colega.
+2. **Seja Específico e Defina Restrições:** Especifique o escopo e o que a IA **não** deve assumir.
+3. **Evite Complexidade:** Mantenha a concisão e evite jargões técnicos excessivos.
+4. **Itere em Conversa:** Use prompts de acompanhamento para refinar e ajustar o tom das respostas.
+5. **Vincule seus Arquivos:** Use a marcação `@` (ex: `@PlanoDeVendas.pdf`) no painel lateral do Workspace para grounding em tempo real de documentos do Drive.
+6. **Gemini como Assistente:** Use as sugestões de ações contextuais do próprio painel lateral para agilizar.
+
+> [!TIP]
+> Ao refinar uma resposta no Google Docs ou Gmail, utilize o chat iterativo para pedir ajustes finos pontuais (como mudar o tom para "mais formal", resumir ou expandir um tópico) em vez de reescrever todo o prompt.
+
+### Caso de Uso Real: Relações Públicas
+
+1. **Prompt Inicial (Docs):**
+   > *"Sou um gerente de RP. Preciso criar um press release com um título chamativo para a imprensa sobre nossa nova aquisição, incluindo as citações do arquivo @[VIP Quotes Acquisition]."*
+2. **Prompt de Refinamento (Docs):**
+   > *"Agora, use o arquivo @[Biography and Mission Statement] para adicionar informações adicionais sobre a história da empresa adquirida e sua missão."*
 
 ---
 
