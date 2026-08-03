@@ -1,41 +1,36 @@
-# SECOMP 2026 - Workshop de IA e Agentes Autônomos
+# 🚀 SECOMP 2026 — Workshop de IA e Agentes Autônomos
 
-Bem-vindo(a) ao repositório oficial das aulas e laboratórios de Inteligência Artificial da **SECOMP 2026**! 🚀
+Bem-vindo(a) ao repositório oficial das aulas, materiais didáticos e laboratórios práticos do **Workshop de IA e Agentes Autônomos** da **SECOMP 2026**!
 
-Este repositório contém todos os materiais, códigos e entregáveis necessários para acompanhar as aulas, realizar os laboratórios práticos e construir o nosso projeto final (Career-AI).
+---
+
+## 📌 Créditos e Agradecimento Especial
+
+Este workshop e a estrutura dos seus materiais didáticos são fundamentados nas pesquisas, artigos científicos e ferramentas desenvolvidas pelo **Prof. M.Sc. Sanderson Oliveira de Macedo (Prof. Sandeco)** — Instituto Federal de Goiás (IFG) / Universidade Federal de Goiás (UFG):
+
+* 🎓 **Perfil Acadêmico:** [ResearchGate](https://www.researchgate.net/profile/Sanderson-Macedo)
+* 🐙 **GitHub Oficial:** [@sandeco](https://github.com/sandeco)
+* 🎥 **Canal de Ensino:** [Canal Sandeco no YouTube](https://youtube.com/canalsandeco)
+* 📄 **Principais Publicações Científicas Referenciadas (2026):**
+  * *What makes a harness a harness: necessary and sufficient conditions for an agent harness* ([arXiv:2606.10106](https://arxiv.org/abs/2606.10106))
+  * *From Prompt to Process: a Process Taxonomy and Comparative Assessment of Frameworks Supporting AI Software Development Agents* ([arXiv:2606.04967](https://arxiv.org/abs/2606.04967))
+  * *Reversa: A Reverse Documentation Engineering Framework for Converting Legacy Software into Operational Specifications for AI Agents* ([arXiv:2605.18684](https://arxiv.org/abs/2605.18684))
+
+---
 
 ## 📁 Estrutura do Repositório
 
-- **[`apostila/`](./apostila)**: Material teórico e conceitual do curso.
-- **[`slides/`](./slides)**: Apresentações de apoio utilizadas durante as aulas.
-- **[`cheatsheets/`](./cheatsheets)**: Guias de referência rápida para facilitar o desenvolvimento (MCP, RAG e Segurança em IA).
-- **[`datasets/`](./datasets)**: Bases de dados (.jsonl) que utilizaremos para alimentar e testar nossos modelos.
-- **[`laboratorios/`](./laboratorios)**: Notebooks interativos (Jupyter) contendo os exercícios práticos passo a passo:
-  - *Lab 01*: Introdução a LLMs
-  - *Lab 02*: Engenharia de Prompts
-  - *Lab 03*: Model Context Protocol (MCP)
-  - *Lab 04*: Agentes Autônomos
-  - *Lab 05*: RAG (Retrieval-Augmented Generation)
-  - *Lab 06*: Segurança e Boas Práticas
-- **[`career-ai/`](./career-ai)**: Diretório do projeto final, um assistente de carreira inteligente completo, contendo backend, frontend, agentes e pipeline RAG.
-- **[`docs/`](./docs)**: Documentações complementares e materiais extras.
-
-## 🚀 Como Começar
-
-1. Clone este repositório para a sua máquina local:
-   ```bash
-   git clone https://github.com/EmmanuelNunes/SECOMP-IA.git
-   ```
-2. Navegue até a pasta do projeto:
-   ```bash
-   cd SECOMP-IA
-   ```
-3. Abra a pasta no seu editor de código preferido (recomendamos o VS Code).
-4. Comece acompanhando o material na pasta `apostila` e depois parta para a mão na massa na pasta `laboratorios`.
-
-## 👨‍💻 Mantenedor
-
-- **Emmanuel Nunes** - [GitHub](https://github.com/EmmanuelNunes)
+* 📚 **[`apostila/`](file:///C:/Users/User/.gemini/antigravity-cli/scratch/SECOMP---IA/apostila)**: Material teórico e conceitual completo do curso.
+* 📑 **[`cheatsheets/`](file:///C:/Users/User/.gemini/antigravity-cli/scratch/SECOMP---IA/cheatsheets)**: Guias de referência rápida em Markdown e PDF (MCP, RAG e Segurança em IA).
+* 🖥️ **[`slides/`](file:///C:/Users/User/.gemini/antigravity-cli/scratch/SECOMP---IA/slides)**: Apresentação em slide PPTX e estrutura de animação.
+* 📊 **[`datasets/`](file:///C:/Users/User/.gemini/antigravity-cli/scratch/SECOMP---IA/datasets)**: Bases de dados (.jsonl) para alimentar o pipeline de RAG.
+* 🧪 **[`laboratorios/`](file:///C:/Users/User/.gemini/antigravity-cli/scratch/SECOMP---IA/laboratorios)**: Notebooks interativos (Jupyter) do Lab 01 ao Lab 06.
+* 💻 **[`src/`](file:///C:/Users/User/.gemini/antigravity-cli/scratch/SECOMP---IA/src)**: Código-fonte do projeto integrador **Career-AI** (FastAPI + ChromaDB + Agentes).
 
 ---
-*Repositório construído com 💙 para a SECOMP 2026.*
+
+## 👨‍💻 Mantenedores
+* **Emmanuel Nunes** - Instrutor & Desenvolvedor ([GitHub](https://github.com/EmmanuelNunes))
+* **Prof. Sanderson Macedo (Prof. Sandeco)** - Idealizador Metodológico & Pesquisador ([GitHub](https://github.com/sandeco))
+
+*Construído com 💙 para a SECOMP 2026.*
