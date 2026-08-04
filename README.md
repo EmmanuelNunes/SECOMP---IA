@@ -4,9 +4,9 @@ Bem-vindo(a) ao repositório oficial das aulas, materiais didáticos e laborató
 
 ---
 
-## 📌 Créditos e Agradecimentos
+## 📌 Créditos e Referencial Metodológico
 
-Este workshop e a estrutura dos seus materiais didáticos utilizam pesquisas, artigos científicos e ferramentas desenvolvidas pelo **Prof. M.Sc. Sanderson Oliveira de Macedo (Prof. Sandeco)** — Instituto Federal de Goiás (IFG) / Universidade Federal de Goiás (UFG):
+Este workshop e a estrutura dos seus materiais didáticos são fundamentados nas pesquisas, artigos científicos e ferramentas desenvolvidas pelo **Prof. M.Sc. Sanderson Oliveira de Macedo (Prof. Sandeco)** — Instituto Federal de Goiás (IFG) / Universidade Federal de Goiás (UFG):
 
 * 🎓 **Perfil Acadêmico:** [ResearchGate](https://www.researchgate.net/profile/Sanderson-Macedo)
 * 🐙 **GitHub Oficial:** [@sandeco](https://github.com/sandeco)
@@ -33,7 +33,6 @@ Este workshop e a estrutura dos seus materiais didáticos utilizam pesquisas, ar
 
 * **Emmanuel Nunes** - Instrutor e Desenvolvedor ([GitHub](https://github.com/EmmanuelNunes))
 * **Prof. Dr. Carlos Alex Sander Juvêncio Gulo** - Professor e Pesquisador (UNEMAT / Grupo PIXEL)
-* **Prof. M.Sc. Sanderson Macedo (Prof. Sandeco)** - Referencial Metodológico & Pesquisador ([GitHub](https://github.com/sandeco)) *(Somente como referencial metodológico)*
 
 ---
 *Construído com 💙 para a SECOMP 2026.*

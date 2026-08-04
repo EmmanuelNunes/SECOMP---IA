@@ -171,7 +171,6 @@ Este workshop e seu material didático referenciam e incorporam as seguintes con
 ## 👨‍💻 Mantenedores e Equipe
 * **Emmanuel Nunes** - Instrutor e Desenvolvedor ([GitHub](https://github.com/EmmanuelNunes))
 * **Prof. Dr. Carlos Alex Sander Juvêncio Gulo** - Professor e Pesquisador (UNEMAT / Grupo PIXEL)
-* **Prof. M.Sc. Sanderson Macedo (Prof. Sandeco)** - Referencial Metodológico & Pesquisador ([GitHub](https://github.com/sandeco)) *(Somente como referencial metodológico)*
 
 ---
 *Apostila do Workshop SECOMP 2026 — Ministrada por Emmanuel Nunes com apoio do Prof. Dr. Carlos Alex Sander Juvêncio Gulo e referencial metodológico do Prof. Sanderson Macedo.* 💙
