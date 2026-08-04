@@ -4,9 +4,9 @@ Bem-vindo(a) ao repositório oficial das aulas, materiais didáticos e laborató
 
 ---
 
-## 📌 Créditos e Agradecimento Especial
+## 📌 Créditos e Agradecimentos
 
-Este workshop e a estrutura dos seus materiais didáticos são fundamentados nas pesquisas, artigos científicos e ferramentas desenvolvidas pelo **Prof. M.Sc. Sanderson Oliveira de Macedo (Prof. Sandeco)** — Instituto Federal de Goiás (IFG) / Universidade Federal de Goiás (UFG):
+Este workshop e a estrutura dos seus materiais didáticos utilizam pesquisas, artigos científicos e ferramentas desenvolvidas pelo **Prof. M.Sc. Sanderson Oliveira de Macedo (Prof. Sandeco)** — Instituto Federal de Goiás (IFG) / Universidade Federal de Goiás (UFG):
 
 * 🎓 **Perfil Acadêmico:** [ResearchGate](https://www.researchgate.net/profile/Sanderson-Macedo)
 * 🐙 **GitHub Oficial:** [@sandeco](https://github.com/sandeco)
@@ -20,17 +20,20 @@ Este workshop e a estrutura dos seus materiais didáticos são fundamentados nas
 
 ## 📁 Estrutura do Repositório
 
-* 📚 **[`apostila/`](file:///C:/Users/User/.gemini/antigravity-cli/scratch/SECOMP---IA/apostila)**: Material teórico e conceitual completo do curso.
-* 📑 **[`cheatsheets/`](file:///C:/Users/User/.gemini/antigravity-cli/scratch/SECOMP---IA/cheatsheets)**: Guias de referência rápida em Markdown e PDF (MCP, RAG e Segurança em IA).
-* 🖥️ **[`slides/`](file:///C:/Users/User/.gemini/antigravity-cli/scratch/SECOMP---IA/slides)**: Apresentação em slide PPTX e estrutura de animação.
-* 📊 **[`datasets/`](file:///C:/Users/User/.gemini/antigravity-cli/scratch/SECOMP---IA/datasets)**: Bases de dados (.jsonl) para alimentar o pipeline de RAG.
-* 🧪 **[`laboratorios/`](file:///C:/Users/User/.gemini/antigravity-cli/scratch/SECOMP---IA/laboratorios)**: Notebooks interativos (Jupyter) do Lab 01 ao Lab 06.
-* 💻 **[`src/`](file:///C:/Users/User/.gemini/antigravity-cli/scratch/SECOMP---IA/src)**: Código-fonte do projeto integrador **Career-AI** (FastAPI + ChromaDB + Agentes).
+* 📚 **[`apostila/`](apostila)**: Material teórico e conceitual completo do curso.
+* 📑 **[`cheatsheets/`](cheatsheets)**: Guias de referência rápida em Markdown e PDF (MCP, RAG e Segurança em IA).
+* 🖥️ **[`slides/`](slides)**: Apresentação em slide PPTX.
+* 📊 **[`datasets/`](datasets)**: Bases de dados (.jsonl) para alimentar o pipeline de RAG.
+* 🧪 **[`laboratorios/`](laboratorios)**: Notebooks interativos (Jupyter) do Lab 01 ao Lab 06.
+* 💻 **[`src/`](src)**: Código-fonte do projeto integrador **Career-AI** (FastAPI + ChromaDB + Agentes).
 
 ---
 
-## 👨‍💻 Mantenedores
-* **Emmanuel Nunes** - Instrutor & Desenvolvedor ([GitHub](https://github.com/EmmanuelNunes))
-* **Prof. Sanderson Macedo (Prof. Sandeco)** - Idealizador Metodológico & Pesquisador ([GitHub](https://github.com/sandeco))
+## 👨‍💻 Mantenedores e Equipe
 
+* **Emmanuel Nunes** - Instrutor e Desenvolvedor ([GitHub](https://github.com/EmmanuelNunes))
+* **Prof. Dr. Carlos Alex Sander Juvêncio Gulo** - Professor e Pesquisador (UNEMAT / Grupo PIXEL)
+* **Prof. M.Sc. Sanderson Macedo (Prof. Sandeco)** - Referencial Metodológico & Pesquisador ([GitHub](https://github.com/sandeco)) *(Somente como referencial metodológico)*
+
+---
 *Construído com 💙 para a SECOMP 2026.*
