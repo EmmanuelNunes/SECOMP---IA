@@ -21,7 +21,7 @@ Este workshop e a estrutura dos seus materiais didáticos são fundamentados nas
 ## 📁 Estrutura do Repositório
 
 * 📚 **[`apostila/`](apostila)**: Material teórico e conceitual completo do curso.
-* 📑 **[`cheatsheets/`](cheatsheets)**: Guias de referência rápida em Markdown e PDF (MCP, RAG e Segurança em IA).
+* 📑 **[`cheatsheets/`](cheatsheets)**: Guias de referência rápida em Markdown e PDF (MCP, RAG, RAG vs. CAG vs. MAG e Segurança em IA).
 * 🖥️ **[`slides/`](slides)**: Apresentação em slide PPTX.
 * 📊 **[`datasets/`](datasets)**: Bases de dados (.jsonl) para alimentar o pipeline de RAG.
 * 🧪 **[`laboratorios/`](laboratorios)**: Notebooks interativos (Jupyter) do Lab 01 ao Lab 06.

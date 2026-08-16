@@ -14,7 +14,7 @@ Bem-vindo(a) à apostila oficial do **Workshop de IA e Agentes Autônomos** da *
 2. [Módulo 2: Engenharia de Prompts de Elite & Outputs Estruturados](#2-módulo-2-engenharia-de-prompts-de-elite--outputs-estruturados)
 3. [Módulo 3: Model Context Protocol (MCP - Especificação Aberta)](#3-módulo-3-model-context-protocol-mcp---especificação-aberta)
 4. [Módulo 4: Agentes Autônomos, Agent Harnesses & Framework Reversa](#4-módulo-4-agentes-autônomos-agent-harnesses--framework-reversa)
-5. [Módulo 5: RAG Avançado, Busca Híbrida & GraphRAG](#5-módulo-5-rag-avançado-busca-híbrida--graphrag)
+5. [Módulo 5: RAG Avançado, Paradigmas de Contexto (RAG vs. CAG vs. MAG) & GraphRAG](#5-módulo-5-rag-avançado-paradigmas-de-contexto-rag-vs-cag-vs-mag--graphrag)
 6. [Módulo 6: Segurança, Governança & OWASP Top 10 para LLMs](#6-módulo-6-segurança-governança--owasp-top-10-para-llms)
 7. [Módulo 7: Projeto Prático Integrador — Career-AI (MVP 2026)](#7-módulo-7-projeto-prático-integrador---career-ai-mvp-2026)
 8. [Módulo 8: Referências Acadêmicas & Trabalhos do Prof. Sanderson Macedo](#8-módulo-8-referências-acadêmicas--trabalhos-do-prof-sanderson-macedo)
@@ -109,9 +109,11 @@ graph TD
 
 ---
 
-## 5. Módulo 5: RAG Avançado, Busca Híbrida & GraphRAG
+## 5. Módulo 5: RAG Avançado, Paradigmas de Contexto (RAG vs. CAG vs. MAG) & GraphRAG
 
-O **RAG (Retrieval-Augmented Generation)** é a técnica essencial para fundamentar LLMs em dados corporativos atualizados, eliminando alucinações.
+O **RAG (Retrieval-Augmented Generation)** é a técnica essencial para fundamentar LLMs em dados corporativos atualizados, eliminando alucinações. Contudo, no estado da arte de 2026, a gestão de contexto evoluiu para três paradigmas complementares: **RAG**, **CAG** e **MAG**.
+
+### 5.1. O Pipeline Clássico e Avançado de RAG
 
 ```mermaid
 flowchart TD
@@ -130,10 +132,66 @@ flowchart TD
     LLM --> FinalAnswer[Resposta Embasada e Fiel]
 ```
 
-### Tecnologias do RAG Avançado
+#### Tecnologias do RAG Avançado
 1. **Hybrid Search (Busca Híbrida):** Combinação de busca vetorial densa com busca esparsa BM25 unificadas por *Reciprocal Rank Fusion (RRF)*.
 2. **Reranking:** Reordenação precisa dos fragmentos de texto via modelos *Cross-Encoder*.
 3. **GraphRAG:** Integração de Grafos de Conhecimento com busca vetorial para sintetizar dados complexos interconectados.
+
+---
+
+### 5.2. O Grande Dilema Arquitetural: RAG vs. CAG vs. MAG
+
+A decisão arquitetural mais importante em sistemas agentic modernos não é eleger o "melhor" método, mas sim **escolher a arquitetura correta para a dinâmica da sua carga de trabalho**:
+
+```mermaid
+graph LR
+    Need[Requisito do Sistema] -->|Dados mudam com frequência?| RAG[🔍 RAG: Retrieval-Augmented]
+    Need -->|Dados estáveis + Baixa Latência?| CAG[⚡ CAG: Cache-Augmented]
+    Need -->|Agente precisa de estado persistente?| MAG[🧠 MAG: Memory-Augmented]
+```
+
+#### 1. 🔍 RAG (Retrieval-Augmented Generation) — Dados Dinâmicos & Grandes Escalas
+* **Mecanismo:** Recupera sob demanda fragmentos relevantes indexados em bancos vetoriais (ChromaDB, Pinecone, Qdrant) e os injeta no prompt do LLM.
+* **Quando Usar:** Bases de dados que são atualizadas a cada minuto ou dia (vagas de emprego, notícias, relatórios diários, políticas em constante mudança).
+* **Vantagens:** Escalabilidade ilimitada em volume de dados; dados sempre frescos sem reprocessar modelos.
+* **Trade-offs:** Latência moderada/alta (overhead de busca + reranking); risco de perda de contexto entre chunks (*chunk boundary loss*).
+
+#### 2. ⚡ CAG (Cache-Augmented Generation) — Dados Estáticos & Latência Zero
+* **Mecanismo:** Utiliza as imensas janelas de contexto modernas (1M a 10M+ tokens) e tecnologias de *Context Caching / KV Caching / Prefix Caching* (Gemini, Claude, vLLM, SGLang) para carregar documentos inteiros diretamente na memória GPU do modelo.
+* **Quando Usar:** Bases de conhecimento estáveis onde a velocidade de resposta (Time To First Token - TTFT) e o raciocínio holístico sobre o documento inteiro são vitais (manuais técnicos, documentação de APIs, diretrizes do workshop, bases de código congeladas).
+* **Vantagens:** Latência ultrabaixa (ignora toda a etapa de busca vetorial); 100% de precisão contextual (sem cortes de chunking); desconto de até 75%-90% no custo de tokens em cache.
+* **Trade-offs:** Inviável para dados que mudam a todo instante (qualquer modificação exige invalidar e reconstruir o cache).
+
+#### 3. 🧠 MAG (Memory-Augmented Generation) — Memória Evolutiva & Continuidade de Agentes
+* **Mecanismo:** Estrutura camadas de memória contínua (**Episódica**, **Semântica** e **Procedural**) para agentes autônomos utilizando frameworks como Mem0, Letta (MemGPT), Zep ou LangGraph Store.
+* **Quando Usar:** Agentes autônomos, assistentes de carreira personalizados (como o *Career-AI*), copilotos de desenvolvimento e sistemas com interações contínuas em múltiplas sessões.
+* **Vantagens:** O agente "lembra" do usuário ao longo do tempo, personaliza recomendações, armazena feedbacks passados e não repete erros cometidos em conversas anteriores.
+* **Trade-offs:** Exige mecanismos de consolidação assíncrona, sumarização periódica e resolução de contradições de memórias.
+
+---
+
+### 5.3. Tabela Comparativa de Paradigmas
+
+| Dimensão | 🔍 RAG (Retrieval) | ⚡ CAG (Cache) | 🧠 MAG (Memory) |
+| :--- | :--- | :--- | :--- |
+| **Foco Primário** | Informação externa e atualizada | Velocidade extrema e contexto total | Continuidade e estado do usuário/agente |
+| **Fonte do Contexto** | Banco vetorial / Índices BM25 | Memória KV Cache / Janela Longa | Memórias persistentes (Episódica/Semântica) |
+| **Dinamismo dos Dados** | Alto (alterações constantes) | Baixo (estático ou pré-compilado) | Dinâmico-Cumulativo (evolui com o uso) |
+| **Latência (TTFT)** | Média a Alta (busca + rerank) | Ultrabaixa (quase instantâneo) | Baixa a Moderada (leitura de perfil) |
+| **Custo de Token** | Custo padrão por chunk | 75% a 90% mais barato (cache hit) | Baixo (apenas memórias consolidadas) |
+| **Tecnologias** | ChromaDB, FAISS, Pinecone, Cohere | Gemini Context Cache, vLLM, SGLang | Mem0, Letta (MemGPT), Zep, LangGraph |
+| **Principal Caso de Uso** | Busca em bases corporativas vivas | Manuais e documentações fixas | Copilotos e agentes de longa duração |
+
+---
+
+### 5.4. A Arquitetura Tri-Híbrida de Agentes em 2026
+
+Os sistemas de IA de maior maturidade técnica combinam harmoniosamente os três padrões em uma única arquitetura:
+
+* **⚡ Camada CAG:** Carrega as regras imutáveis do sistema, documentação técnica de base e prompts de sistema no KV Cache com resposta de altíssima velocidade.
+* **🔍 Camada RAG:** É acionada como uma ferramenta (*Tool via MCP*) quando o agente detecta que precisa consultar bases de dados externas vivas (vagas abertas, repositórios de código recentes, normas recém-publicadas).
+* **🧠 Camada MAG:** Mantém a trilha de evolução do usuário, registrando o progresso do aprendizado, decisões de arquitetura aprovadas e perfil de carreira entre diferentes dias de oficina.
+
 
 ---
 
