@@ -9,6 +9,8 @@ Este documento descreve a arquitetura técnica e os padrões de contexto do noss
 * **Frontend**: Interface web moderna e responsiva para interação do usuário final, visualização de feedbacks e submissão de currículos.
 * **Backend**: API Python construída em FastAPI, responsável por gerenciar rotas assíncronas, orquestração de chamadas de modelos e integração de dados.
 * **Motor de Agentes & MCP**: Lógica autônoma (LangGraph / Agent Harness) capaz de planejar etapas, invocar ferramentas locais e remotas via protocolo **MCP (Model Context Protocol)** e iterar até a conclusão da tarefa.
+* **Motor de Raciocínio (LLM)**: **Gemini 3.7 Flash** com suporte a *Hybrid Reasoning* (velocidade padrão + Thinking Mode sob demanda).
+* **Ambiente de Desenvolvimento Agêntico**: **Google Antigravity (AGY)** com orquestração de subagentes concorrentes e skills modulares.
 
 ---
 
@@ -46,7 +48,7 @@ flowchart TD
     API <--> CAG_Cache
     API <--> VectorDB
     API <--> MemoryStore
-    API --> LLM[LLM / Reasoning Engine]
+    API --> LLM[Gemini 3.7 Flash Engine]
     LLM --> Response([Diagnóstico de Carreira Personalizado])
 ```
 

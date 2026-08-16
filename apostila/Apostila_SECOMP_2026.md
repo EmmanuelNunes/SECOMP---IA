@@ -11,9 +11,10 @@ Bem-vindo(a) à apostila oficial do **Workshop de IA e Agentes Autônomos** da *
 ## 📌 Sumário
 1. [Módulo 1: Introdução aos LLMs & Modelos de Raciocínio (2026)](#1-módulo-1-introdução-aos-llms--modelos-de-raciocínio-2026)
 1.1 [Módulo 1.1: Guia de Prompting no Google Workspace com Gemini](#11-módulo-11-guia-de-prompting-no-google-workspace-com-gemini)
+1.2 [Módulo 1.2: O Modelo Vigente: Gemini 3.7 Flash & Raciocínio Híbrido](#12-módulo-12-o-modelo-vigente-gemini-37-flash--raciocínio-híbrido)
 2. [Módulo 2: Engenharia de Prompts de Elite & Outputs Estruturados](#2-módulo-2-engenharia-de-prompts-de-elite--outputs-estruturados)
 3. [Módulo 3: Model Context Protocol (MCP - Especificação Aberta)](#3-módulo-3-model-context-protocol-mcp---especificação-aberta)
-4. [Módulo 4: Agentes Autônomos, Agent Harnesses & Framework Reversa](#4-módulo-4-agentes-autônomos-agent-harnesses--framework-reversa)
+4. [Módulo 4: Agentes Autônomos, Agent Harnesses, Framework Reversa & Antigravity](#4-módulo-4-agentes-autônomos-agent-harnesses-framework-reversa--antigravity)
 5. [Módulo 5: RAG Avançado, Paradigmas de Contexto (RAG vs. CAG vs. MAG) & GraphRAG](#5-módulo-5-rag-avançado-paradigmas-de-contexto-rag-vs-cag-vs-mag--graphrag)
 6. [Módulo 6: Segurança, Governança & OWASP Top 10 para LLMs](#6-módulo-6-segurança-governança--owasp-top-10-para-llms)
 7. [Módulo 7: Projeto Prático Integrador — Career-AI (MVP 2026)](#7-módulo-7-projeto-prático-integrador---career-ai-mvp-2026)
@@ -26,9 +27,9 @@ Bem-vindo(a) à apostila oficial do **Workshop de IA e Agentes Autônomos** da *
 Os **Grandes Modelos de Linguagem (LLMs)** evoluíram para sistemas altamente sofisticados capazes de raciocínio lógico em tempo de inferência (*Test-Time Compute*), arquiteturas de mistura de especialistas (*Mixture of Experts - MoE*) e execução nativa multimodal.
 
 ### A Evolução Arquitetural
-* **Transformers Clássicos (2017-2023):** Processamento baseado unicamente em self-attention.
+* **Transformers Clássicos (2017-2023):** Processamento baseado unicamente em self-attention de passo único.
 * **Mixture of Experts - MoE (2024-2025):** Ativação seletiva de sub-redes (especialistas) reduzindo custo computacional enquanto amplia parâmetros totais.
-* **Modelos de Raciocínio (Reasoning Models / 2025-2026):** Modelos como Gemini 2.0 Flash Thinking, DeepSeek-R1 e OpenAI o1/o3 que utilizam cadeias de pensamento internas (*Chain-of-Thought*) expandidas antes de emitir a resposta final, resolvendo problemas complexos de código, matemática e lógica formal.
+* **Modelos de Raciocínio (Reasoning Models / 2025-2026):** Modelos que utilizam cadeias de pensamento internas (*Chain-of-Thought*) expandidas antes de emitir a resposta final, resolvendo problemas complexos de código, matemática e lógica formal.
 
 ### Principais Capacidades Modernas
 1. **Janelas de Contexto Gigantescas:** Suporte a 1M até 10M+ tokens de contexto (ex: ecossistema Gemini), permitindo carregar repositórios inteiros de código em uma única chamada.
@@ -52,6 +53,26 @@ A integração da IA Generativa no Google Workspace une modelos de última gera�
 > **Governança e Privacidade:** Os dados corporativos processados pelo Gemini no Workspace **não são utilizados para treinamento de modelos públicos**, não passam por revisão humana e permanecem protegidos por criptografia de nível enterprise.
 
 ---
+
+## 1.2. Módulo 1.2: O Modelo Vigente: Gemini 3.7 Flash & Raciocínio Híbrido
+
+O **Gemini 3.7 Flash** representa o estado da arte dos modelos de linguagem da Google em 2026, sendo o primeiro modelo de **Raciocínio Híbrido (*Hybrid Reasoning Engine*)** de classe mundial.
+
+```mermaid
+graph LR
+    Input[Entrada / Prompt do Usuário] --> Router{Complexidade da Tarefa}
+    Router -->|Baixa Complexidade / Velocidade| FlashMode[🚀 Standard Flash Mode: Resposta Instantânea & Baixo Custo]
+    Router -->|Alta Complexidade / Codificação| ThinkingMode[🧠 Thinking Mode: Test-Time Compute & Cadeia de Raciocínio Profunda]
+    FlashMode --> Output[Resposta Otimizada]
+    ThinkingMode --> Output
+```
+
+### Principais Inovações do Gemini 3.7 Flash
+1. **Unificação de Velocidade e Profundidade:** Elimina a necessidade de escolher entre um modelo ultra-rápido (como os modelos Flash anteriores) e um modelo lento de raciocínio puro. Ele opera nativamente em ambos os regimes através do controle de *Thinking Budget* (orçamento de pensamento ajustável).
+2. **Liderança em Engenharia de Software e Agentes:** Desempenho de ponta na resolução autônoma de issues complexas em repositórios reais (benchmarks SWE-bench), refatorações arquiteturais e geração de código livre de bugs.
+3. **Context Caching Nativo de Alta Eficiência:** Permite que 1 Milhão de tokens de documentação e código sejam mantidos em memória de inferência com custo até 90% menor e Time-To-First-Token (TTFT) instantâneo.
+4. **Chamada de Ferramentas de Primeira Classe:** Integração nativa com o protocolo MCP e ferramentas de sistema com rigorosa validação de tipos e structured outputs.
+
 
 ## 2. Módulo 2: Engenharia de Prompts de Elite & Outputs Estruturados
 
@@ -89,14 +110,14 @@ graph LR
 
 ---
 
-## 4. Módulo 4: Agentes Autônomos, Agent Harnesses & Framework Reversa
+## 4. Módulo 4: Agentes Autônomos, Agent Harnesses, Framework Reversa & Antigravity
 
 Um **Agente de IA** é um sistema computacional que utiliza um LLM como motor de raciocínio central para perceber um objetivo, planejar ações, executar ferramentas em loop e ajustar sua conduta.
 
-### O Conceito de Agent Harness (Macedo, 2026)
+### 4.1. O Conceito de Agent Harness (Macedo, 2026)
 Conforme definido pelo Prof. Sanderson Macedo no artigo *"What makes a harness a harness"* (arXiv:2606.10106), o **Agent Harness** é a camada de software que envolve um modelo de linguagem e o capacita a atuar diretamente sobre repositórios de código com isolamento, ciclo de vida e controle de execução.
 
-### O Framework Reversa (Macedo & Costa, 2026)
+### 4.2. O Framework Reversa (Macedo & Costa, 2026)
 Desenvolvido pelo Prof. Sanderson Macedo, o **Reversa** ([github.com/sandeco/reversa](https://github.com/sandeco/reversa), arXiv:2605.18684) é um framework de engenharia reversa de documentação que converte sistemas legados em especificações operacionais rastreáveis e executáveis por agentes de IA através de uma pipeline multi-agente:
 
 ```mermaid
@@ -106,6 +127,25 @@ graph TD
     Rules --> Spec[Agente Gerador de Especificações]
     Spec --> Gherkin[Cenários de Paridade Gherkin + Testes para Agentes]
 ```
+
+### 4.3. Ambientes de Desenvolvimento Agêntico: Google Antigravity (AGY)
+O **Google Antigravity (AGY)** é a plataforma avançada concebida pela equipe do Google DeepMind que operacionaliza o desenvolvimento agêntico na prática, integrando ferramentas de terminal, subagentes especializados e modelos de raciocínio como o **Gemini 3.7 Flash**.
+
+```mermaid
+flowchart LR
+    Dev([Desenvolvedor]) <--> Antigravity[🤖 Google Antigravity Core]
+    Antigravity <--> Subagents[👥 Subagentes Concorrentes & Workspaces]
+    Antigravity <--> Skills[🧩 Skills Modulares: SKILL.md]
+    Antigravity <--> Rules[📜 Governança: AGENTS.md / GEMINI.md]
+    Antigravity <--> MCP[🔌 Integração Nativa MCP]
+```
+
+#### Pilares do Antigravity na SECOMP 2026:
+1. **Subagentes Hierárquicos e Concorrentes:** Capacidade de lançar subagentes em segundo plano (`research`, `self`, ou customizados em tempo de execução via `define_subagent`) com isolamento de repositório (*workspaces* `branch` / `share` / `inherit`).
+2. **Sistema de Skills Encapsuladas:** Habilidades modulares compostas por `SKILL.md` (metadados YAML), scripts em Python/Shell e materiais de referência carregados dinamicamente sob demanda.
+3. **Governança por Regras Vivas (`AGENTS.md`):** Arquivos declarativos na raiz do projeto que ditam a conduta, restrições e padrões arquiteturais que nenhum subagente pode violar.
+4. **Rastreabilidade e Artefatos:** Geração de documentos vivos (`artifacts`), diffs contínuos e auditoria passo a passo via arquivos de transcrição (`transcript.jsonl`).
+
 
 ---
 
