@@ -181,56 +181,79 @@ flowchart TD
 
 ### 5.2. O Grande Dilema Arquitetural: RAG vs. CAG vs. MAG
 
-A decisão arquitetural mais importante em sistemas agentic modernos não é eleger o "melhor" método, mas sim **escolher a arquitetura correta para a dinâmica da sua carga de trabalho**:
+A decisão arquitetural mais importante em sistemas de IA e agentes em 2026 não é eleger o "melhor" método, mas sim **escolher a arquitetura correta para a dinâmica da carga de trabalho**:
 
 ```mermaid
 graph LR
-    Need[Requisito do Sistema] -->|Dados mudam com frequência?| RAG[🔍 RAG: Retrieval-Augmented]
+    Need[Requisito do Sistema] -->|Dados mudam minuto a minuto?| RAG[🔍 RAG: Retrieval-Augmented]
     Need -->|Dados estáveis + Baixa Latência?| CAG[⚡ CAG: Cache-Augmented]
     Need -->|Agente precisa de estado persistente?| MAG[🧠 MAG: Memory-Augmented]
 ```
 
 #### 1. 🔍 RAG (Retrieval-Augmented Generation) — Dados Dinâmicos & Grandes Escalas
-* **Mecanismo:** Recupera sob demanda fragmentos relevantes indexados em bancos vetoriais (ChromaDB, Pinecone, Qdrant) e os injeta no prompt do LLM.
-* **Quando Usar:** Bases de dados que são atualizadas a cada minuto ou dia (vagas de emprego, notícias, relatórios diários, políticas em constante mudança).
-* **Vantagens:** Escalabilidade ilimitada em volume de dados; dados sempre frescos sem reprocessar modelos.
-* **Trade-offs:** Latência moderada/alta (overhead de busca + reranking); risco de perda de contexto entre chunks (*chunk boundary loss*).
+* **Mecânica:** Busca dinamicamente dados *stateless* e fora de contexto a partir de índices externos em tempo de query via similaridade vetorial (ChromaDB, Pinecone).
+* **Vetor Arquitetural:** Origem do conhecimento em espaço de índice externo; estado operacional 100% *stateless*; dreno de latência no I/O de rede com banco de dados; sincronização de dados instantânea por atualização de índice.
+* **Quando Usar:** Bases documentais vivas, conformidade jurídica com atualizações constantes, pesquisa sobre milhões de arquivos e dados de mercado em tempo real.
 
 #### 2. ⚡ CAG (Cache-Augmented Generation) — Dados Estáticos & Latência Zero
-* **Mecanismo:** Utiliza as imensas janelas de contexto modernas (1M a 10M+ tokens) e tecnologias de *Context Caching / KV Caching / Prefix Caching* (Gemini, Claude, vLLM, SGLang) para carregar documentos inteiros diretamente na memória GPU do modelo.
-* **Quando Usar:** Bases de conhecimento estáveis onde a velocidade de resposta (Time To First Token - TTFT) e o raciocínio holístico sobre o documento inteiro são vitais (manuais técnicos, documentação de APIs, diretrizes do workshop, bases de código congeladas).
-* **Vantagens:** Latência ultrabaixa (ignora toda a etapa de busca vetorial); 100% de precisão contextual (sem cortes de chunking); desconto de até 75%-90% no custo de tokens em cache.
-* **Trade-offs:** Inviável para dados que mudam a todo instante (qualquer modificação exige invalidar e reconstruir o cache).
+* **Mecânica:** Bypassa completamente a busca externa ao pré-carregar e fixar todo o acervo documental diretamente no **KV-Cache congelado (*frozen*)** na VRAM da GPU do LLM.
+* **Vetor Arquitetural:** Origem do conhecimento na janela de contexto longa (1M--2M tokens); estado pré-compilado/congelado; dreno de latência limitado à ingestão inicial; sincronização de dados em lote por invalidação de cache.
+* **Quando Usar:** Manuais e livros didáticos, bases de código congeladas para copilotos de repositório inteiro, ferramentas internas com dados fixos e aplicações com requisito de resposta sub-segundo (TTFT $\approx$ 0ms).
 
 #### 3. 🧠 MAG (Memory-Augmented Generation) — Memória Evolutiva & Continuidade de Agentes
-* **Mecanismo:** Estrutura camadas de memória contínua (**Episódica**, **Semântica** e **Procedural**) para agentes autônomos utilizando frameworks como Mem0, Letta (MemGPT), Zep ou LangGraph Store.
-* **Quando Usar:** Agentes autônomos, assistentes de carreira personalizados (como o *Career-AI*), copilotos de desenvolvimento e sistemas com interações contínuas em múltiplas sessões.
-* **Vantagens:** O agente "lembra" do usuário ao longo do tempo, personaliza recomendações, armazena feedbacks passados e não repete erros cometidos em conversas anteriores.
-* **Trade-offs:** Exige mecanismos de consolidação assíncrona, sumarização periódica e resolução de contradições de memórias.
+* **Mecânica:** Implementa tabelas de memória persistentes e graváveis (*read/write*) em paralelo à pipeline de inferência para rastrear estados mutáveis de sessão em loops de agentes multi-etapas.
+* **Vetor Arquitetural:** Origem em matrizes de memória inline; estado altamente mutável e com estado (*stateful*); dreno de latência no roteamento do controlador de memória; sincronização contínua por operações de escrita.
+* **Quando Usar:** Engenharia de software multi-agente, automação de contas/CRM de clientes, fluxos de desenvolvimento com agentes autônomos e simulações de longa duração.
 
 ---
 
-### 5.3. Tabela Comparativa de Paradigmas
+### 5.3. Comparativo Estrutural e Perfil de Latência (TTFT)
 
-| Dimensão | 🔍 RAG (Retrieval) | ⚡ CAG (Cache) | 🧠 MAG (Memory) |
+| Vetor Arquitetural | 🔍 RAG | ⚡ CAG | 🧠 MAG |
 | :--- | :--- | :--- | :--- |
-| **Foco Primário** | Informação externa e atualizada | Velocidade extrema e contexto total | Continuidade e estado do usuário/agente |
-| **Fonte do Contexto** | Banco vetorial / Índices BM25 | Memória KV Cache / Janela Longa | Memórias persistentes (Episódica/Semântica) |
-| **Dinamismo dos Dados** | Alto (alterações constantes) | Baixo (estático ou pré-compilado) | Dinâmico-Cumulativo (evolui com o uso) |
-| **Latência (TTFT)** | Média a Alta (busca + rerank) | Ultrabaixa (quase instantâneo) | Baixa a Moderada (leitura de perfil) |
-| **Custo de Token** | Custo padrão por chunk | 75% a 90% mais barato (cache hit) | Baixo (apenas memórias consolidadas) |
-| **Tecnologias** | ChromaDB, FAISS, Pinecone, Cohere | Gemini Context Cache, vLLM, SGLang | Mem0, Letta (MemGPT), Zep, LangGraph |
-| **Principal Caso de Uso** | Busca em bases corporativas vivas | Manuais e documentações fixas | Copilotos e agentes de longa duração |
+| **Origem do Conhecimento** | Espaço de Índice Externo | Janela de Contexto Sem Limites | Matrizes de Memória Inline |
+| **Estado Operacional** | Totalmente Sem Estado (*Stateless*) | Pré-compilado / Congelado (*Frozen*) | Altamente Com Estado (*Stateful*) |
+| **Principal Dreno de Latência** | I/O de Rede com Banco de Dados | Processamento Inicial de Ingestão | Roteamento do Controlador de Memória |
+| **Sincronização de Dados** | Instantânea (Atualização de Índice) | Em Lote (Invalidação de Cache) | Contínua (Operações de Escrita R/W) |
+| **Perfil de Velocidade** | Moderada (Pipeline multi-etapas) | **⚡ Mais Rápida (TTFT $\approx$ 0ms)** | Variável (Depende do grafo de agentes) |
 
 ---
 
-### 5.4. A Arquitetura Tri-Híbrida de Agentes em 2026
+### 5.4. Topologia de Memória, Escala e Matriz de Infraestrutura (2x2)
 
-Os sistemas de IA de maior maturidade técnica combinam harmoniosamente os três padrões em uma única arquitetura:
+```text
+                      ALTO CUSTO DE DEPLOYMENT (Compute + Operações)
+                                            ▲
+                                            │
+                     ┌──────────────────────┼──────────────────────┐
+                     │ 🔍 RAG               │ 🧠 MAG               │
+                     │ Custo Moderado       │ Alto Custo           │
+                     │ Baixa Complexidade   │ Alta Complexidade    │
+                     └──────────────────────┼──────────────────────┘
+  BAIXA COMPLEXIDADE ───────────────────────┼───────────────────────> ALTA COMPLEXIDADE
+  (Fácil de Construir)                      │                        (Difícil de Manter)
+                     ┌──────────────────────┼──────────────────────┐
+                     │ ⚡ CAG               │                      │
+                     │ Alto Custo Inicial   │                      │
+                     │ Baixa Complexidade   │                      │
+                     └──────────────────────┼──────────────────────┘
+                                            │
+                                            ▼
+                     BAIXO CUSTO DE DEPLOYMENT (Compute + Operações)
+```
 
-* **⚡ Camada CAG:** Carrega as regras imutáveis do sistema, documentação técnica de base e prompts de sistema no KV Cache com resposta de altíssima velocidade.
-* **🔍 Camada RAG:** É acionada como uma ferramenta (*Tool via MCP*) quando o agente detecta que precisa consultar bases de dados externas vivas (vagas abertas, repositórios de código recentes, normas recém-publicadas).
-* **🧠 Camada MAG:** Mantém a trilha de evolução do usuário, registrando o progresso do aprendizado, decisões de arquitetura aprovadas e perfil de carreira entre diferentes dias de oficina.
+* **🔍 RAG:** Escala virtualmente infinita via índices externos; custo controlado por filtragem Top-K; roda com LLMs menores e hardware padrão.
+* **⚡ CAG:** Escala limitada pelo tamanho da janela de contexto e VRAM de GPU (A100/H100); custo inicial mais alto para manter instâncias ativas, compensado pelo custo 90% menor por token processado e latência zero.
+* **🧠 MAG:** Otimiza a janela de contexto local gerenciando *Working Memory Windows* (carrega novos tokens e expulsa tokens antigos) para evitar degradação de estado ao longo de ciclos profundos.
+
+---
+
+### 5.5. Gatilhos de Deploy em Produção (Decision Triggers)
+
+1. **Ative RAG quando:** Dados atualizam minuto a minuto; exigência de citações precisas de fontes; bases massivas e distribuídas com múltiplos contribuidores.
+2. **Ative CAG quando:** Dados são amplamente estáveis ou raramente mudam; resposta ultrarrápida (sub-segundo) é a prioridade número um; dados cabem na janela do modelo.
+3. **Ative MAG quando:** A aplicação exige raciocínio multi-etapas com ferramentas; necessidade de rastrear e atualizar o perfil do usuário/sessão ao longo do tempo.
+
 
 
 ---
