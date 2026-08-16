@@ -3,8 +3,8 @@
 Bem-vindo(a) à apostila oficial do **Workshop de IA e Agentes Autônomos** da **SECOMP 2026**! Este material foi elaborado e atualizado com base nos conceitos mais recentes de Inteligência Artificial Generativa, Agentes Autônomos, o protocolo **MCP (Model Context Protocol)** e arquiteturas de recuperação **RAG Avançado (Hybrid & GraphRAG)**.
 
 > [!NOTE]
-> **Créditos e Agradecimento Especial:**
-> Este material e a metodologia adotada possuem fundamentação acadêmica e conceitual nos trabalhos, pesquisas e ferramentas desenvolvidas pelo **Prof. M.Sc. Sanderson Oliveira de Macedo (Prof. Sandeco)** — Instituto Federal de Goiás (IFG) / Universidade Federal de Goiás (UFG), criador do [Canal Sandeco](https://youtube.com/canalsandeco), do framework [Reversa](https://github.com/sandeco/reversa) e do ecossistema [Mira Animator](https://github.com/sandeco/mira-animator).
+> **Créditos, Orientação e Agradecimentos Especiais:**
+> Este material e a metodologia adotada possuem fundamentação acadêmica e conceitual nos trabalhos, pesquisas e ferramentas desenvolvidas pelo **Prof. M.Sc. Sanderson Oliveira de Macedo (Prof. Sandeco)** — Instituto Federal de Goiás (IFG) / Universidade Federal de Goiás (UFG), criador do [Canal Sandeco](https://youtube.com/canalsandeco), do framework [Reversa](https://github.com/sandeco/reversa) e do ecossistema [Mira](https://github.com/sandeco/mira-animator), e pelo **Prof. Dr. Carlos Alex Sander Juvêncio Gulo** — Universidade do Estado de Mato Grosso (UNEMAT) / Universidade do Porto (FEUP), líder do [Grupo de Pesquisa PIXEL](http://dgp.cnpq.br/dgp/espelhogrupo/510344).
 
 ---
 
@@ -18,7 +18,7 @@ Bem-vindo(a) à apostila oficial do **Workshop de IA e Agentes Autônomos** da *
 5. [Módulo 5: RAG Avançado, Paradigmas de Contexto (RAG vs. CAG vs. MAG) & GraphRAG](#5-módulo-5-rag-avançado-paradigmas-de-contexto-rag-vs-cag-vs-mag--graphrag)
 6. [Módulo 6: Segurança, Governança & OWASP Top 10 para LLMs](#6-módulo-6-segurança-governança--owasp-top-10-para-llms)
 7. [Módulo 7: Projeto Prático Integrador — Career-AI (MVP 2026)](#7-módulo-7-projeto-prático-integrador---career-ai-mvp-2026)
-8. [Módulo 8: Referências Acadêmicas & Trabalhos do Prof. Sanderson Macedo](#8-módulo-8-referências-acadêmicas--trabalhos-do-prof-sanderson-macedo)
+8. [Módulo 8: Referências Acadêmicas & Trabalhos dos Professores Sanderson Macedo e Carlos Alex Sander Gulo](#8-módulo-8-referências-acadêmicas--trabalhos-dos-professores-sanderson-macedo-e-carlos-alex-sander-gulo)
 
 ---
 
@@ -276,9 +276,12 @@ O **Career-AI** é a aplicação prática desenvolvida no workshop que consolida
 
 ---
 
-## 8. Módulo 8: Referências Acadêmicas & Trabalhos do Prof. Sanderson Macedo
+## 8. Módulo 8: Referências Acadêmicas & Trabalhos dos Professores Sanderson Macedo e Carlos Alex Sander Gulo
 
-Este workshop e seu material didático referenciam e incorporam as seguintes contribuições acadêmicas e bibliográficas de autoria do **Prof. M.Sc. Sanderson Oliveira de Macedo (Prof. Sandeco)**:
+Este workshop e seu material didático referenciam, incorporam e agradecem as seguintes contribuições acadêmicas, bibliográficas e de pesquisa:
+
+### 8.1. Contribuições do Prof. M.Sc. Sanderson Oliveira de Macedo (Prof. Sandeco)
+*Instituto Federal de Goiás (IFG) / Universidade Federal de Goiás (UFG)*
 
 1. **MACEDO, Sanderson Oliveira de.** *What makes a harness a harness: necessary and sufficient conditions for an agent harness.* arXiv preprint arXiv:2606.10106, 2026. Disponível em: [https://arxiv.org/abs/2606.10106](https://arxiv.org/abs/2606.10106).
 2. **MACEDO, Sanderson Oliveira de.** *From Prompt to Process: a Process Taxonomy and Comparative Assessment of Frameworks Supporting AI Software Development Agents.* arXiv preprint arXiv:2606.04967, 2026. Disponível em: [https://arxiv.org/abs/2606.04967](https://arxiv.org/abs/2606.04967).
@@ -286,12 +289,21 @@ Este workshop e seu material didático referenciam e incorporam as seguintes con
 4. **MACEDO, Sanderson Oliveira de.** Repositórios de código e projetos open-source em IA e Agentes Autônomos. GitHub: [github.com/sandeco](https://github.com/sandeco).
 5. **CANAL SANDECO.** Conteúdo audiovisual, aulas e tutoriais sobre Inteligência Artificial, Aprendizado por Reforço e Agentes. YouTube: [youtube.com/canalsandeco](https://youtube.com/canalsandeco).
 
+### 8.2. Contribuições do Prof. Dr. Carlos Alex Sander Juvêncio Gulo
+*Universidade do Estado de Mato Grosso (UNEMAT) / Universidade do Porto (FEUP) / Grupo PIXEL*
+
+1. **GULO, Carlos Alex Sander Juvêncio.** *High-Performance Computing and Image Processing Architectures for Interactive and Medical Systems.* Tese (Doutoramento em Engenharia Informática) — Faculdade de Engenharia da Universidade do Porto (FEUP / INEGI), Porto, Portugal, 2019.
+2. **GULO, Carlos Alex Sander Juvêncio; GRUPO PIXEL.** *Processamento de Imagens Médicas, Visão Computacional e Segmentação Semântica de Alta Resolução.* Diretório dos Grupos de Pesquisa no Brasil (CNPq / UNEMAT), 2020--2026. Disponível em: [http://dgp.cnpq.br/dgp/espelhogrupo/510344](http://dgp.cnpq.br/dgp/espelhogrupo/510344).
+3. **GULO, Carlos Alex Sander Juvêncio et al.** *Robótica Educacional, Inteligência Artificial e Ambientes Interativos de Ensino Colaborativo em Computação.* Escola Regional de Informática de Mato Grosso (ERI-MT) / Sociedade Brasileira de Computação (SBC), 2018--2026.
+4. **GULO, Carlos Alex Sander Juvêncio.** *Currículo do Sistema de Currículos Lattes (CNPq).* Disponível em: [http://lattes.cnpq.br/0062065110639984](http://lattes.cnpq.br/0062065110639984).
+5. **GULO, Carlos Alex Sander Juvêncio.** Produção Científica e Perfil no ResearchGate. Disponível em: [https://www.researchgate.net/profile/Carlos-Gulo](https://www.researchgate.net/profile/Carlos-Gulo).
+
 ---
 ---
 
 ## 👨‍💻 Mantenedores e Equipe
 * **Emmanuel Nunes** - Instrutor e Desenvolvedor ([GitHub](https://github.com/EmmanuelNunes))
-* **Prof. Dr. Carlos Alex Sander Juvêncio Gulo** - Professor e Pesquisador (UNEMAT / Grupo PIXEL)
+* **Prof. Dr. Carlos Alex Sander Juvêncio Gulo** - Professor, Pesquisador e Orientador (UNEMAT / Grupo PIXEL)
 
 ---
-*Apostila do Workshop SECOMP 2026 — Ministrada por Emmanuel Nunes com apoio do Prof. Dr. Carlos Alex Sander Juvêncio Gulo e referencial metodológico do Prof. Sanderson Macedo.* 💙
+*Apostila do Workshop SECOMP 2026 — Ministrada por Emmanuel Nunes com co-autoria, apoio e orientação do Prof. Dr. Carlos Alex Sander Juvêncio Gulo e referencial metodológico do Prof. Sanderson Macedo.* 💙
