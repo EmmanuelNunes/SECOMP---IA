@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 340" width="100%" height="340">
+  <defs>
+    <linearGradient id="bgSecomp" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#061214"/>
+      <stop offset="50%" stop-color="#0a192f"/>
+      <stop offset="100%" stop-color="#020c1b"/>
+    </linearGradient>
+
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="40%" stop-color="#06b6d4"/>
+      <stop offset="80%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+
+    <radialGradient id="radialGlow" cx="50%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#059669" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <style>
+    .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 900; font-size: 50px; fill: url(#titleGrad); }
+    .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 500; font-size: 19px; fill: #94a3b8; }
+    .badge-txt { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 13px; fill: #e2e8f0; }
+  </style>
+
+  <rect width="1200" height="340" rx="20" fill="url(#bgSecomp)"/>
+  <rect width="1200" height="340" rx="20" fill="url(#radialGlow)"/>
+  <rect x="1" y="1" width="1198" height="338" rx="19" fill="none" stroke="#134e4a" stroke-width="1.8"/>
+
+  <!-- Linhas de Circuito / Gráfico -->
+  <g opacity="0.3" stroke="#10b981" stroke-width="1.2">
+    <path d="M 50 170 H 220 L 280 230 H 450" fill="none"/>
+    <path d="M 1150 170 H 980 L 920 110 H 750" fill="none"/>
+    <circle cx="220" cy="170" r="4" fill="#34d399"/>
+    <circle cx="280" cy="230" r="4" fill="#34d399"/>
+    <circle cx="980" cy="170" r="4" fill="#38bdf8"/>
+    <circle cx="920" cy="110" r="4" fill="#38bdf8"/>
+  </g>
+
+  <g text-anchor="middle">
+    <!-- Tag superior -->
+    <text x="600" y="80" font-family="'Segoe UI', sans-serif" font-weight="700" font-size="14" fill="#34d399" letter-spacing="3">
+      WORKSHOP OFICIAL • SECOMP 2026
+    </text>
+
+    <!-- Título Principal -->
+    <text x="600" y="145" class="title" filter="url(#glow)">IA e Agentes Autônomos</text>
+
+    <!-- Subtítulo -->
+    <text x="600" y="190" class="subtitle">
+      Aulas Teóricas, Laboratórios Práticos (Jupyter), Arquiteturas RAG e Frameworks de Agentes
+    </text>
+
+    <!-- Chips / Badges Visuais -->
+    <g transform="translate(230, 235)">
+      <rect x="0" y="0" width="160" height="34" rx="17" fill="#062d2b" stroke="#0f766e" stroke-width="1.2"/>
+      <text x="80" y="21" class="badge-txt">🤖 Agentes Autônomos</text>
+
+      <rect x="175" y="0" width="145" height="34" rx="17" fill="#062d2b" stroke="#0f766e" stroke-width="1.2"/>
+      <text x="247" y="21" class="badge-txt">📚 RAG vs CAG vs MAG</text>
+
+      <rect x="335" y="0" width="135" height="34" rx="17" fill="#062d2b" stroke="#0f766e" stroke-width="1.2"/>
+      <text x="402" y="21" class="badge-txt">🧪 6 Labs Práticos</text>
+
+      <rect x="485" y="0" width="125" height="34" rx="17" fill="#062d2b" stroke="#0f766e" stroke-width="1.2"/>
+      <text x="547" y="21" class="badge-txt">⚡ ChromaDB Vector</text>
+
+      <rect x="625" y="0" width="120" height="34" rx="17" fill="#062d2b" stroke="#0f766e" stroke-width="1.2"/>
+      <text x="685" y="21" class="badge-txt">🚀 Career-AI</text>
+    </g>
+  </g>
+</svg>
