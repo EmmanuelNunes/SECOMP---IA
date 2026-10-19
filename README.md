@@ -1,123 +1,143 @@
-<div align="center">
+**Português (Brasil)** · [English](README.en.md) · [Español](README.es.md)
 
-  <!-- Banner Principal -->
-  <img src="assets/banner_secomp.svg" alt="SECOMP 2026 - IA e Agentes Autônomos" width="100%" />
+<picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="docs/assets/readme/hero-still.svg">
+  <img src="docs/assets/readme/hero.svg" alt="SECOMP 2026 Workshop Banner" width="1600" height="680">
+</picture>
 
-  <br/><br/>
+# Workshop de IA e Agentes Autônomos (SECOMP 2026)
 
-  <!-- Badges no Estilo for-the-badge -->
-  <p align="center">
-    <a href="https://github.com/EmmanuelNunes/SECOMP---IA">
-      <img src="https://img.shields.io/badge/Evento-SECOMP%202026-059669?style=for-the-badge&logo=eventbrite&logoColor=white" alt="SECOMP 2026" />
-    </a>
-    <a href="https://www.python.org/">
-      <img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.10+" />
-    </a>
-    <a href="https://jupyter.org/">
-      <img src="https://img.shields.io/badge/Notebooks-Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white" alt="Jupyter" />
-    </a>
-    <a href="https://fastapi.tiangolo.com/">
-      <img src="https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
-    </a>
-    <a href="https://www.trychroma.com/">
-      <img src="https://img.shields.io/badge/Vector_DB-ChromaDB-blueviolet?style=for-the-badge&logo=database&logoColor=white" alt="ChromaDB" />
-    </a>
-  </p>
+**Repositório oficial de aulas, materiais conceituais e laboratórios práticos do Workshop de IA e Agentes Autônomos da SECOMP 2026.**
 
-  <p align="center">
-    <b>Repositório oficial de aulas, materiais teóricos e laboratórios práticos do Workshop de IA e Agentes Autônomos da SECOMP 2026.</b><br/>
-    Do modelo conceitual à orquestração prática de agentes de IA, RAG multimodal e sistemas de software cognitivo.
-  </p>
+Do modelo conceitual de LLMs à orquestração prática de agentes de IA, RAG multimodal, apresentações coreografadas em Mira D3.js e sistemas cognitivos aplicados no projeto integrador **Career-AI**.
 
-  <p align="center">
-    <a href="#-laboratórios-práticos">Laboratórios</a> •
-    <a href="#-estrutura-do-repositório">Estrutura</a> •
-    <a href="#-projeto-integrador-career-ai">Projeto Career-AI</a> •
-    <a href="#-referencial-metodológico">Pesquisa & Créditos</a> •
-    <a href="#-equipe-e-instrutores">Equipe</a>
-  </p>
-
-</div>
+<p align="center"><a href="#start"><strong>COMEÇAR AGORA →</strong></a> &nbsp; · &nbsp; <a href="#labs"><strong>LABORATÓRIOS</strong></a> &nbsp; · &nbsp; <a href="#architecture"><strong>ARQUITETURA</strong></a> &nbsp; · &nbsp; <a href="#career-ai"><strong>CAREER-AI</strong></a> &nbsp; · &nbsp; <a href="#research"><strong>REFERÊNCIAS ACADÊMICAS</strong></a></p>
 
 ---
 
-## 🧪 Laboratórios Práticos (Hands-on)
+<a id="start"></a>
+## 00 / Escolha onde começar
 
-O workshop combina teoria sólida e prática em notebooks interativos:
-
-<div align="center">
-
-| Lab | Tema Principal | Descrição / Entregável | Ambiente |
-| :---: | :--- | :--- | :---: |
-| **Lab 01** | Fundamentos de LLMs & Prompts | Chamadas estruturadas, formatação de saída e controle de alucinação | `Jupyter` |
-| **Lab 02** | Embeddings & Busca Vetorial | Geração de representações vetoriais de texto e cálculo de similaridade por cosseno | `Jupyter` |
-| **Lab 03** | RAG Básico (Retrieval-Augmented) | Ingestão de dados com ChromaDB, chunking e enriquecimento de contexto | `ChromaDB` |
-| **Lab 04** | RAG Avançado vs. CAG vs. MAG | Estratégias comparativas de recuperação, re-ranking e janelas de contexto | `Jupyter` |
-| **Lab 05** | Ferramentas & Function Calling | Conectando LLMs ao mundo real via APIs, busca externa e execução de código | `Python` |
-| **Lab 06** | Agentes Autônomos & ReAct | Implementação de loops perceptivos de tomada de decisão com agentes de IA | `FastAPI` |
-
-</div>
+| Trilha do participante | Ponto de partida | Entregável / Foco |
+|---|---|---|
+| **Apostila e Teoria** | [`apostila/`](apostila) | Material conceitual completo de fundamentos, arquiteturas e agentes. |
+| **Cheatsheets Rápidos** | [`cheatsheets/`](cheatsheets) | Guias diretos para MCP, RAG, CAG, MAG e Google Gemini Flash. |
+| **Laboratórios Práticos** | [`laboratorios/`](laboratorios) | 6 Notebooks interativos passo a passo (Jupyter e ChromaDB). |
+| **Projeto Career-AI** | [`src/`](src) | Aplicação integradora em FastAPI com busca semântica de competências. |
+| **Slides Animados Mira** | [`slides/`](slides) | Apresentações HTML animadas com coreografia de dados D3.js. |
 
 ---
 
-## 🚀 Projeto Integrador: Career-AI
+<a id="setup"></a>
+## 01 / Prepare e execute a base
 
-Localizado no diretório [`src/`](src), o **Career-AI** é a aplicação integradora de demonstração do curso:
-* **Arquitetura:** Backend assíncrono em **FastAPI** acoplado a uma base vetorial **ChromaDB**.
-* **Objetivo:** Sistema inteligente de matching e aconselhamento de carreira que analisa perfis e currículos através de agentes especializados de triagem e orientação de competências.
+```bash
+# 1. Clone o repositório
+git clone https://github.com/EmmanuelNunes/SECOMP---IA.git
+cd SECOMP---IA
 
----
+# 2. Crie e ative o ambiente virtual
+python -m venv venv
+# No Windows:
+.\venv\Scripts\activate
+# No Linux/macOS:
+source venv/bin/activate
 
-## 📁 Estrutura do Repositório
+# 3. Instale as dependências
+pip install -r requirements.txt
 
+# 4. Inicie o Jupyter Lab para os laboratórios
+jupyter lab
 ```
+
+---
+
+<a id="labs"></a>
+## 02 / Arquitetura e fluxo de processamento
+
+<picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="docs/assets/readme/architecture-still.svg">
+  <img src="docs/assets/readme/architecture.svg" alt="Trilha de Laboratórios SECOMP" width="1600" height="520">
+</picture>
+
+### Grade de Laboratórios Práticos
+
+| Lab | Tema Principal | Descrição e Entregável | Ambiente |
+|:---:|---|---|:---:|
+| **Lab 01** | Fundamentos de LLMs & Prompts | Chamadas estruturadas, formatação JSON e mitigação de alucinações. | `Jupyter` |
+| **Lab 02** | Embeddings & Busca Vetorial | Representações vetoriais de texto e cálculo de similaridade por cosseno. | `Jupyter` |
+| **Lab 03** | RAG Básico (Retrieval-Augmented) | Ingestão com ChromaDB, chunking inteligente e injeção contextual. | `ChromaDB` |
+| **Lab 04** | RAG Avançado vs. CAG vs. MAG | Estratégias comparativas de recuperação, re-ranking e janelas expandidas. | `Jupyter` |
+| **Lab 05** | Ferramentas & Function Calling | Conexão de agentes a APIs do mundo real e execução controlada. | `Python` |
+| **Lab 06** | Agentes Autônomos & ReAct | Implementação de loops perceptivos de decisão e reflexão. | `FastAPI` |
+
+---
+
+<a id="career-ai"></a>
+## 03 / Recursos, capacidades e projeto integrador
+
+Localizado em [`src/`](src), o **Career-AI** é a aplicação integradora de demonstração do curso:
+- **Backend:** FastAPI assíncrono acoplado ao ChromaDB.
+- **Objetivo:** Sistema inteligente de matching e aconselhamento de carreira que analisa currículos e perfis técnicos através de agentes especializados de triagem.
+
+```bash
+# Executar o Career-AI
+cd src
+uvicorn main:app --reload --port 8000
+```
+
+---
+
+<a id="structure"></a>
+## 04 / Estrutura do repositório
+
+```text
 SECOMP---IA/
-├── apostila/                # Apostila teórica e conceitual completa do curso
+├── apostila/                # Apostila teórica e conceitual completa
 ├── cheatsheets/             # Guias de consulta rápida (MCP, RAG, CAG, MAG, Gemini Flash)
-├── slides/                  # Apresentações oficiais do workshop (.pptx)
-├── datasets/                # Conjuntos de dados (.jsonl) para os testes de RAG
+├── slides/                  # Apresentações oficiais e templates Mira D3.js
+├── datasets/                # Conjuntos de dados (.jsonl) para testes de RAG
 ├── laboratorios/            # Notebooks práticos (Lab 01 ao Lab 06)
 ├── src/                     # Código-fonte do projeto integrador Career-AI
-└── assets/                  # Banners e recursos visuais oficiais
+├── docs/assets/readme/      # SVGs editoriais de hero e arquitetura
+├── AGENTS.md                # Instruções e contratos para agentes de IA
+├── CLAUDE.md                # Ponte para Claude Code (@AGENTS.md)
+├── README.md                # Documentação em Português (Brasil)
+├── README.en.md             # Documentação em Inglês
+└── README.es.md             # Documentação em Espanhol
 ```
 
 ---
 
-## 📌 Referencial Metodológico & Pesquisa
+<a id="research"></a>
+## 05 / Referencial metodológico e pesquisa científica
 
-Este workshop e sua esteira didática apoiam-se em publicações científicas e pesquisas contemporâneas em agentes de IA:
+Este workshop e sua esteira didática apoiam-se rigorosamente em publicações científicas e pesquisas contemporâneas em agentes de IA:
 
-### 👨‍🏫 Prof. M.Sc. Sanderson Oliveira de Macedo (Prof. Sandeco)
+### Prof. M.Sc. Sanderson Oliveira de Macedo (Prof. Sandeco)
 *Instituto Federal de Goiás (IFG) / Universidade Federal de Goiás (UFG)*
+- **Perfil Acadêmico:** [ResearchGate](https://www.researchgate.net/profile/Sanderson-Macedo) | **GitHub Oficial:** [@sandeco](https://github.com/sandeco) | **YouTube:** [Canal Sandeco](https://youtube.com/canalsandeco)
+- **Publicações Referenciadas (2026):**
+  - *O que faz de um arnês um arnês: condições necessárias e suficientes para um arnês de agente* ([arXiv:2606.10106](https://arxiv.org/abs/2606.10106))
+  - *Do Prompt ao Processo: uma Taxonomia de Processos e Avaliação Comparativa de Frameworks de Suporte a Agentes de Desenvolvimento de Software de IA* ([arXiv:2606.04967](https://arxiv.org/abs/2606.04967))
+  - *Reversa: Uma estrutura de engenharia de documentação reversa para converter software legado em especificações operacionais para agentes de IA* ([arXiv:2605.18684](https://arxiv.org/abs/2605.18684))
 
-* 🎓 **Perfil Acadêmico:** [ResearchGate](https://www.researchgate.net/profile/Sanderson-Macedo) | 🐙 **GitHub Oficial:** [@sandeco](https://github.com/sandeco) | 🎥 **Canal:** [Canal Sandeco no YouTube](https://youtube.com/canalsandeco)
-* 📄 **Publicações Referenciadas (2026):**
-  * *O que faz de um arnês um arnês: condições necessárias e suficientes para um arnês de agente* ([arXiv:2606.10106](https://arxiv.org/abs/2606.10106))
-  * *Do Prompt ao Processo: uma Taxonomia de Processos e Avaliação Comparativa de Frameworks de Suporte a Agentes de Desenvolvimento de Software de IA* ([arXiv:2606.04967](https://arxiv.org/abs/2606.04967))
-  * *Reversa: Uma estrutura de engenharia de documentação reversa para converter software legado em especificações operacionais para agentes de IA* ([arXiv:2605.18684](https://arxiv.org/abs/2605.18684))
-
-### 👨‍🏫 Prof. Dr. Carlos Alex Sander Juvêncio Gulo
+### Prof. Dr. Carlos Alex Sander Juvêncio Gulo
 *Universidade do Estado de Mato Grosso (UNEMAT) / Universidade do Porto (FEUP) / Grupo PIXEL*
-
-* 🎓 **Perfil Acadêmico:** [Currículo Lattes (CNPq)](http://lattes.cnpq.br/0062065110639984) | [ResearchGate](https://www.researchgate.net/profile/Carlos-Gulo) | [Google Scholar](https://scholar.google.com/citations?user=carlos-gulo)
-* 🔬 **Grupo de Pesquisa:** [Grupo PIXEL — Processamento de Imagem, Visão Computacional e Aplicações Interativas (UNEMAT)](http://dgp.cnpq.br/dgp/espelhogrupo/510344)
-* 🏛️ **Atuação:** Professor Permanente do Curso de Ciência da Computação / FALECT (UNEMAT), Doutor em Engenharia Informática pela Faculdade de Engenharia da Universidade do Porto (FEUP / Portugal) e Mestre em Ciência da Computação (UNESP).
+- Pesquisa de fronteira em inteligência computacional, sistemas distribuídos e visão computacional.
 
 ---
 
-## 👨‍💻 Equipe e Instrutores
+<a id="credits"></a>
+## 06 / Equipe, condução e licença
 
-<div align="center">
+- **Instrutor & Organizador:** Emmanuel Nunes
+- **Ecossistema:** [EmmanuelNunes/vibe-coding-toolkit](https://github.com/EmmanuelNunes/vibe-coding-toolkit)
+- **Licença:** MIT License para código-fonte; materiais textuais sob Creative Commons BY 4.0.
 
-| Instrutor / Pesquisador | Papel | Contato / Perfil |
-| :--- | :--- | :---: |
-| **Emmanuel Nunes** | Instrutor Principal & Desenvolvedor de Software | [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/EmmanuelNunes) |
-| **Prof. Dr. Carlos Alex Sander J. Gulo** | Orientador, Pesquisador e Professor Permanente (UNEMAT) | [![Lattes](https://img.shields.io/badge/Lattes-004A80?style=for-the-badge&logo=curriculum&logoColor=white)](http://lattes.cnpq.br/0062065110639984) |
-
-</div>
-
----
-
-<div align="center">
-  <sub>Construído com 💙 para a SECOMP 2026 • Compartilhe conhecimento e cite os autores!</sub>
-</div>
+<p align="center">
+  <br>
+  <strong>BUILD WITH INTENT. SHIP WITH FLOW.</strong>
+  <br><br>
+  <a href="#workshop-de-ia-e-agentes-autônomos-secomp-2026">Voltar ao topo ↑</a>
+</p>

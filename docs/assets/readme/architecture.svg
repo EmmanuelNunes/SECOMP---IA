@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 520" width="1600" height="520">
+  <defs>
+    <linearGradient id="bgArch" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080b11"/>
+      <stop offset="100%" stop-color="#05070a"/>
+    </linearGradient>
+    <pattern id="archGrid" x="0" y="0" width="32" height="32" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#202c3c" opacity="0.4"/>
+    </pattern>
+    <style>
+      .font-mono { font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, monospace; }
+      .font-sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, Roboto, sans-serif; }
+      
+    @keyframes flowLine {
+      from { stroke-dashoffset: 40; }
+      to { stroke-dashoffset: 0; }
+    }
+    .flow-dash { animation: flowLine 2s linear infinite; }
+    @media (prefers-reduced-motion: reduce) {
+      .flow-dash { animation: none !important; }
+    }
+  
+    </style>
+  </defs>
+
+  <rect width="1600" height="520" fill="url(#bgArch)"/>
+  <rect width="1600" height="520" fill="url(#archGrid)"/>
+
+  <!-- Section Header -->
+  <g transform="translate(100, 60)">
+    <text x="0" y="0" class="font-mono" font-size="13" font-weight="700" fill="#85c6bc" letter-spacing="2">02 / ARCHITECTURE &amp; PIPELINE</text>
+    <text x="0" y="32" class="font-sans" font-size="26" font-weight="800" fill="#ffffff">Trilha Pedagógica & Arquitetura de Laboratórios</text>
+    <text x="0" y="58" class="font-sans" font-size="15" fill="#8196ae">Da fundação de modelos generativos à orquestração autônoma e RAG multimodal.</text>
+  </g>
+
+  <!-- 4 Step Boxes -->
+  <!-- Step 1 -->
+  <g transform="translate(100, 180)">
+    <rect x="0" y="0" width="280" height="200" rx="10" fill="#0d141e" stroke="#2d4263" stroke-width="1.5"/>
+    <text x="24" y="38" class="font-mono" font-size="11" font-weight="700" fill="#85c6bc">ETAPA 01</text>
+    <text x="24" y="68" class="font-sans" font-size="18" font-weight="800" fill="#ffffff">Fundamentos & Prompts</text>
+    <text x="24" y="96" class="font-sans" font-size="13" fill="#8fa5be">Estruturação de chamadas, schemas JSON e mitigação de alucinação.</text>
+    <text x="24" y="165" class="font-mono" font-size="11" fill="#71869f">Lab 01 · Jupyter</text>
+  </g>
+
+  <line x1="380" y1="280" x2="480" y2="280" stroke="#85c6bc" stroke-width="2" stroke-dasharray="6 4" class="flow-dash"/>
+
+  <!-- Step 2 -->
+  <g transform="translate(480, 180)">
+    <rect x="0" y="0" width="280" height="200" rx="10" fill="#0d141e" stroke="#2d4263" stroke-width="1.5"/>
+    <text x="24" y="38" class="font-mono" font-size="11" font-weight="700" fill="#85c6bc">ETAPA 02</text>
+    <text x="24" y="68" class="font-sans" font-size="18" font-weight="800" fill="#ffffff">Vetores & Embeddings</text>
+    <text x="24" y="96" class="font-sans" font-size="13" fill="#8fa5be">Similaridade de cosseno e ingestão vetorial no ChromaDB.</text>
+    <text x="24" y="165" class="font-mono" font-size="11" fill="#71869f">Lab 02-03 · ChromaDB</text>
+  </g>
+
+  <line x1="760" y1="280" x2="860" y2="280" stroke="#85c6bc" stroke-width="2" stroke-dasharray="6 4" class="flow-dash"/>
+
+  <!-- Step 3 -->
+  <g transform="translate(860, 180)">
+    <rect x="0" y="0" width="280" height="200" rx="10" fill="#0d141e" stroke="#2d4263" stroke-width="1.5"/>
+    <text x="24" y="38" class="font-mono" font-size="11" font-weight="700" fill="#85c6bc">ETAPA 03</text>
+    <text x="24" y="68" class="font-sans" font-size="18" font-weight="800" fill="#ffffff">RAG vs CAG vs MAG</text>
+    <text x="24" y="96" class="font-sans" font-size="13" fill="#8fa5be">Re-ranking contextual e janelas de contexto expandidas.</text>
+    <text x="24" y="165" class="font-mono" font-size="11" fill="#71869f">Lab 04 · Re-Ranking</text>
+  </g>
+
+  <line x1="1140" y1="280" x2="1240" y2="280" stroke="#85c6bc" stroke-width="2" stroke-dasharray="6 4" class="flow-dash"/>
+
+  <!-- Step 4 -->
+  <g transform="translate(1240, 180)">
+    <rect x="0" y="0" width="260" height="200" rx="10" fill="#0d141e" stroke="#2d4263" stroke-width="1.5"/>
+    <text x="24" y="38" class="font-mono" font-size="11" font-weight="700" fill="#85c6bc">ETAPA 04</text>
+    <text x="24" y="68" class="font-sans" font-size="18" font-weight="800" fill="#ffffff">Agentes & ReAct</text>
+    <text x="24" y="96" class="font-sans" font-size="13" fill="#8fa5be">Tomada de decisão perceptiva e projeto integrador Career-AI.</text>
+    <text x="24" y="165" class="font-mono" font-size="11" fill="#71869f">Lab 05-06 · FastAPI</text>
+  </g>
+</svg>
